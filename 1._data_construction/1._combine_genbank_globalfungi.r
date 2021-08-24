@@ -11,6 +11,7 @@ d <- read.csv('data/EMFungiGenBank_2020_11_19.csv')
 d$RDP_ID <- as.character(d$RDP_ID)
 
 #globalfungi data.
+#Unfortunately, these data are not publicly available at present. We will share with users downstream mapping ready data that can be used to replicate our analyses.
 gf <- fread('/Users/colinaverill/Documents/git_projects/global_fungi_ECM/data/global_fungi_otu.csv', header=T)
 gf.env <- read.csv('/Users/colinaverill/Documents/git_projects/global_fungi_ECM/data/global_fungi_env.csv')
 gf.env$id.int <- as.character(gf.env$id.int)
