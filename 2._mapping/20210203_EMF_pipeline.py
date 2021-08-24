@@ -17,7 +17,7 @@ ee.Initialize()
 
 ###########################################################
 # Load data
-taxonList = list(pd.read_csv('/Users/johanvandenhoogen/ETH/Projects/AMF/data/EMF_listToModel.csv')['unite_sh'])
+taxonList = list(pd.read_csv('~/data/EMF_listToModel.csv')['unite_sh'])
 
 # If script doesn't run at once due to multiprocessing issues; rerun - lines below filter out jobs currently in queue
 taskList = [str(i) for i in ee.batch.Task.list()]
@@ -31,7 +31,7 @@ taxonList = [x for x in taxonList if x not in runningList]
 
 # General settings
 # Input the name of the username that serves as the home folder for asset storage
-usernameFolderString = 'johanvandenhoogen'
+usernameFolderString = ''
 
 # Input the name of the classification property
 classProperty = 'presence'
@@ -44,7 +44,7 @@ longWaitTime = 10
 
 # Input the Cloud Storage Bucket that will hold the bootstrap collections when uploading them to Earth Engine
 # !! This bucket should be pre-created before running this script
-bucketOfInterest = '20200406_soil_temperature_jh'
+bucketOfInterest = ''
 
 # Specify the column names where the latitude and longitude information is stored
 latString = 'Pixel_Lat'
@@ -89,7 +89,7 @@ covariateList = [
 ]
 
 # Load the composite on which to perform the mapping, and subselect the bands of interest
-compositeToUse = ee.Image("projects/crowtherlab/Composite/CrowtherLab_Composite_30ArcSec").select(covariateList)
+compositeToUse = ee.Image("").select(covariateList)
 
 # Load a geometry to use for the export
 exportingGeometry = ee.Geometry.Polygon([[[-180, 88], [180, 88], [180, -88], [-180, -88]]], None, False);
@@ -123,7 +123,7 @@ def pipeline(taxonOfInterest):
     while not success:
             try:
                 # Write the name of a local staging area folder for outputted CSV's
-                holdingFolder = '/Users/johanvandenhoogen/ETH/Projects/EMF/data/training_data/'+taxonOfInterest
+                holdingFolder = '~/data/training_data/'+taxonOfInterest
 
                 # Create directory to hold training data
                 # Path(holdingFolder).mkdir(parents=True, exist_ok=True)
@@ -136,7 +136,7 @@ def pipeline(taxonOfInterest):
                 # Start of modeling
                 ####################################################################################################################################################################
 
-                obs_points = ee.FeatureCollection('users/johanvandenhoogen/2021_EMF/20210204_EMF_sampled')\
+                obs_points = ee.FeatureCollection('20210204_EMF_sampled')\
                                     .filterMetadata('unite_sh', 'equals', taxonOfInterest)\
                                     .distinct('.geo')\
                                     .map(lambda f: f.set('presence', 1)).select(covariateList + ['presence'])
@@ -145,7 +145,7 @@ def pipeline(taxonOfInterest):
 
                 buffer = obs_points.map(lambda f: f.buffer(dist))
 
-                PA_full = ee.FeatureCollection('users/johanvandenhoogen/2020_PCA/20210204_random_points_sampled').select(covariateList + ['presence'])
+                PA_full = ee.FeatureCollection('20210204_random_points_sampled').select(covariateList + ['presence'])
                 PA_2dfar = PA_full.filter(ee.Filter.geometry(buffer).Not())
 
                 fcList = []
@@ -282,7 +282,7 @@ def pipeline(taxonOfInterest):
                 export_task = ee.batch.Export.image.toAsset(
                     image = finalImage.toFloat(),
                     description = taxonOfInterest+'_probability',
-                    assetId = 'projects/crowtherlab/johan/2021_fungi_SDMs/EMF_probabilities/'+taxonOfInterest,
+                    assetId = 'EMF_probabilities/'+taxonOfInterest,
                     crs = 'EPSG:4326',
                     crsTransform = '[0.008333333333333333,0,-180,0,-0.008333333333333333,90]',
                     region = exportingGeometry,
@@ -323,7 +323,7 @@ def pipeline(taxonOfInterest):
     while not success:
             try:
                 # Write the name of a local staging area folder for outputted CSV's
-                holdingFolder = '/Users/johanvandenhoogen/ETH/Projects/EMF/data/training_data/'+taxonOfInterest
+                holdingFolder = '~/data/training_data/'+taxonOfInterest
 
                 # Create directory to hold training data
                 # Path(holdingFolder).mkdir(parents=True, exist_ok=True)
@@ -336,7 +336,7 @@ def pipeline(taxonOfInterest):
                 # Start of modeling
                 ####################################################################################################################################################################
 
-                obs_points = ee.FeatureCollection('users/johanvandenhoogen/2021_EMF/20210108_EMF_presences_to_map')\
+                obs_points = ee.FeatureCollection('20210108_EMF_presences_to_map')\
                                     .filterMetadata('unite_sh', 'equals', taxonOfInterest)\
                                     .distinct('.geo')\
                                     .map(lambda f: f.set('presence', 1))
@@ -345,7 +345,7 @@ def pipeline(taxonOfInterest):
 
                 buffer = obs_points.map(lambda f: f.buffer(dist))
 
-                PA_full = ee.FeatureCollection('users/johanvandenhoogen/2020_PCA/random_points_1M')
+                PA_full = ee.FeatureCollection('20210204_random_points_sampled').select(covariateList + ['presence'])
                 PA_2dfar = PA_full.filter(ee.Filter.geometry(buffer).Not())
 
 
