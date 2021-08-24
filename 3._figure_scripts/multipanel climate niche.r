@@ -6,6 +6,9 @@ library(gridExtra)
 library(mgcv)
 library(rlang)
 
+#set output path.
+#output.path <- figures/climate_niche.jpeg
+
 #load data.----
 amf <- read.csv('data/threshold_0.9_AMF_reducedFeatures.csv')
 emf <- read.csv('data/threshold_0.9_EMF_reducedFeatures.csv')
