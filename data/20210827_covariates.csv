@@ -1,0 +1,32 @@
+﻿Covariate name,Citation
+CGIAR_PET,"Trabucco, A., and Zomer, R.J. 2018. Global Aridity Index and Potential Evapo-Transpiration (ET0) Climate Database v2. CGIAR Consortium for Spatial Information(CGIAR-CSI). "
+CHELSA_BIO_Annual_Mean_Temperature,https://doi.org/10.1038/sdata.2017.122
+CHELSA_BIO_Annual_Precipitation,https://doi.org/10.1038/sdata.2017.122
+CHELSA_BIO_Max_Temperature_of_Warmest_Month,https://doi.org/10.1038/sdata.2017.122
+CHELSA_BIO_Precipitation_Seasonality,https://doi.org/10.1038/sdata.2017.122
+ConsensusLandCover_Human_Development_Percentage,https://doi.org/10.1111/geb.12182
+ConsensusLandCoverClass_Barren,https://doi.org/10.1111/geb.12182
+ConsensusLandCoverClass_Deciduous_Broadleaf_Trees,https://doi.org/10.1111/geb.12182
+ConsensusLandCoverClass_Evergreen_Broadleaf_Trees,https://doi.org/10.1111/geb.12182
+ConsensusLandCoverClass_Evergreen_Deciduous_Needleleaf_Trees,https://doi.org/10.1111/geb.12182
+ConsensusLandCoverClass_Herbaceous_Vegetation,https://doi.org/10.1111/geb.12182
+ConsensusLandCoverClass_Mixed_Other_Trees,https://doi.org/10.1111/geb.12182
+ConsensusLandCoverClass_Shrubs,https://doi.org/10.1111/geb.12182
+EarthEnvTexture_CoOfVar_EVI,10.1038/sdata.2018.40
+EarthEnvTexture_Correlation_EVI,10.1038/sdata.2018.40
+EarthEnvTexture_Homogeneity_EVI,10.1038/sdata.2018.40
+EarthEnvTopoMed_AspectCosine,10.1038/sdata.2018.40
+EarthEnvTopoMed_AspectSine,10.1038/sdata.2018.40
+EarthEnvTopoMed_Elevation,10.1038/sdata.2018.40
+EarthEnvTopoMed_Slope,10.1038/sdata.2018.40
+EarthEnvTopoMed_TopoPositionIndex,10.1038/sdata.2018.40
+EsaCci_BurntAreasProbability,https://catalogue.ceda.ac.uk/uuid/7c114fc6e2884c1f9ca107e7a502fdbf
+GHS_Population_Density,https://doi.org/10.2760/290498
+GlobBiomass_AboveGroundBiomass,https://doi.org/10.1594/PANGAEA.894711
+GlobPermafrost_PermafrostExtent,https://doi.org/10.1016/j.earscirev.2019.04.023
+MODIS_NPP,https://explorer.earthengine.google.com/#detail/MODIS%2F055%2FMOD17A3
+PelletierEtAl_SoilAndSedimentaryDepositThicknesses,https://agupubs.onlinelibrary.wiley.com/doi/10.1002/2015MS000526
+SG_Depth_to_bedrock,https://doi.org/10.1371/journal.pone.0169748
+SG_Sand_Content_005cm,https://doi.org/10.1371/journal.pone.0169748
+SG_SOC_Content_005cm,https://doi.org/10.1371/journal.pone.0169748
+SG_Soil_pH_H2O_005cm,https://doi.org/10.1371/journal.pone.0169748
